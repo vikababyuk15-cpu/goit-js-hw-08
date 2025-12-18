@@ -82,15 +82,7 @@ const markup = images.map(({ preview, original, description }) => {return `
 
 galleryList.innerHTML = markup;
 
-galleryList.addEventListener('click', (event) => {
-  event.preventDefault(); 
-  if (event.target.nodeName !== 'IMG') return; 
-
-  const largeImage = event.target.dataset.source;
-  console.log(largeImage); 
-});
-
-galleryList.addEventListener('click', (event) => {
+galleryList.addEventListener('click', event => {
   event.preventDefault();
 
   const isImage = event.target.classList.contains('gallery-image');
@@ -98,6 +90,7 @@ galleryList.addEventListener('click', (event) => {
 
   const largeImageUrl = event.target.dataset.source;
   const imageAlt = event.target.alt;
+
   const instance = basicLightbox.create(`
     <div class="modal">
         <img src="${largeImageUrl}" alt="${imageAlt}" width="1112" height="640">
